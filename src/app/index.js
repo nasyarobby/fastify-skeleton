@@ -1,8 +1,9 @@
 const Fastify = require('fastify');
 const openapiGlue = require('fastify-openapi-glue');
-const { format } = require('./services/response');
+const { send } = require('./services/response');
 const { status } = require('./services/status');
 const service = require('./routes/index.js');
+const { ClientError, ServerError } = require('./utils/errors');
 
 const specification = `${__dirname}/swagger.json`;
 const app = Fastify({
@@ -45,8 +46,33 @@ app.setErrorHandler((error, request, reply) => {
     const field = path.charAt(1).toUpperCase() + path.slice(2);
     const message = `${field} ${error.validation[0].message}`;
     // reply.status(422).send(format(request, reply, message));
-    reply.status(200).send(format(request, reply, status.FAIL, 422, message));
+    send(request, reply, status.FAIL, 400, 'Login gagal!', message);
+  } else if (error instanceof ClientError || error instanceof ServerError) {
+    send(
+      request,
+      reply,
+      error.status,
+      error.code,
+      error.message,
+      process.env.NODE_ENV === 'production' ? error.data : { ...error.data, stack: error.stack }
+    );
   }
+
+  // Unhandled error
+  // Jika production log error ke console
+  // jika tidak, error akan dimasukkan ke RESPONSE
+  // TODO: proses pengecekan production atau bukan sebaiknya dipindah ke fungsi tersendiri
+  if (process.env.NODE_ENV !== 'production') app.log.error(error);
+  send(
+    request,
+    reply,
+    status.ERROR,
+    500,
+    'Internal server error',
+    process.env.NODE_ENV !== 'production'
+      ? { ...error.data, stack: error.stack, error: error.error }
+      : error.data
+  );
 });
 
 module.exports = app;
