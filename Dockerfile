@@ -5,12 +5,9 @@ RUN  yum -y install oracle-release-el7 oracle-nodejs-release-el7 && \
      rm -rf /var/cache/yum
 RUN npm -g install pm2 yarn
 
-WORKDIR /djponline-password
-COPY djponline-password /djponline-password
-
 WORKDIR /server
-COPY src/package*.json ./
+COPY context/package*.json ./
 RUN yarn install
-COPY src/ /server
+COPY context/ /server
 EXPOSE 3000
 CMD ["pm2-runtime", "ecosystem.config.js"]
