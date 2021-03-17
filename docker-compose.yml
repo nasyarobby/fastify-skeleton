@@ -1,0 +1,29 @@
+version: "3.3"
+services:
+  api:
+    image: 10.244.65.16:16379/djpauth/api
+    ports:
+      - 3000:3000
+    volumes:
+      - ./src:/server/src
+      - ./ecosystem.config.dev.js:/server/ecosystem.config.js
+    environment:
+      - PORT=3000
+      - REDIS_PASS=redisdev
+      - REDIS_SENTINEL=10.244.65.16:26379,10.244.65.17:26379,10.244.65.18:26379
+      - REDIS_SENTINEL_MASTER=mymaster
+      - NODE_ORACLEDB_CONNECTIONSTRING=10.254.208.36:1521/pajak
+      - NODE_ORACLEDB_USER=DJPAUTH
+      - NODE_ORACLEDB_PASSWORD=djpauth001
+      - API_TIMEOUT=15000
+      #- SOA_URL_PROFILE_WP=http://10.254.214.193/mfwp/profilDataWp?wsdl
+      #- SOA_TIMEOUT=15000
+      - SWAGGER_HOSTS=http://localhost:3000,http://localhost/oauth2/
+      - KEYSSERVER_JWT_SIGN_ENDPOINT=http://10.244.66.33:3001/sign
+      - DJPONLINEAUTH_ENDPOINT=http://localhost:3000/api/djponline/auth
+      - KEYSERVER_KEY_ENDPOINT=http://10.244.66.33:3001/key/
+      - PROFILWP_ENDPOINT=http://10.244.66.33:3003/profilwp/
+      - CLIENT_DATA_ENDPOINT=http://10.244.66.33:3002/application/
+      - TENANT_DATA_ENDPOINT=http://10.244.66.33:3002/tenant/
+      - SCOPES_DATA_ENDPOINT=http://10.244.66.33:3002/scope
+      - OAUTH2_COOKIES_EXP=1h
