@@ -21,6 +21,7 @@
     "prettier": "^2.2.1"
   },
   "dependencies": {
-    "djp-api": "https://github.com/nasyarobby/djp-api"
+    "djp-api": "https://github.com/nasyarobby/djp-api",
+    "ioredis": "^4.24.2"
   }
 }
