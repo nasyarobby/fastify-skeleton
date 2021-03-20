@@ -8,6 +8,6 @@ RUN npm -g install pm2 yarn
 WORKDIR /server
 COPY context/package*.json ./
 RUN yarn install
-COPY context/ /server
+COPY src/ /server
 EXPOSE 3000
 CMD ["pm2-runtime", "ecosystem.config.js"]
