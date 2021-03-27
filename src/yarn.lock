@@ -1686,10 +1686,10 @@ dir-glob@^3.0.1:
   dependencies:
     path-type "^4.0.0"
 
-djp-api@^1.0.0:
-  version "1.0.0"
-  resolved "https://registry.yarnpkg.com/djp-api/-/djp-api-1.0.0.tgz#6f814a7c8571a2fcbe86ff60c2d0f0a33d7d575f"
-  integrity sha512-55Ridj4KXTWECcIf5Su92UJdcApefwOyrcD0jMdk7+ktKG9G4GiEOKrhZmH6HrzHDZjdu/9dscLSPxcNVoNYiA==
+djp-api@^1.1.0:
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/djp-api/-/djp-api-1.1.0.tgz#17a0a89864ec01e5e6af78c849236662631753e2"
+  integrity sha512-f9kN1rh2P8e2Tl6JovGvTV33zPWVGZjvJTf6gLyhS15pueiTWhUa++jhMU4YPU7O6ykauf2FPkAoJLAJpGm+3g==
   dependencies:
     fastify "^3.14.0"
     fastify-openapi-glue "^2.4.0"
