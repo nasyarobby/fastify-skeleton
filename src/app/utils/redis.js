@@ -30,7 +30,7 @@ redis.on('ready', () => {
   console.log('Redis is ready.');
   if (REDIS_SENTINEL) {
     // eslint-disable-next-line
-    console.log('Redis sentinels: ', sentinels)
+    console.table(sentinels)
   }
 });
 
