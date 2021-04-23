@@ -6,7 +6,6 @@ services:
       - 3000:3000
     volumes:
       - ./src:/server/src
-      - ./ecosystem.config.dev.js:/server/ecosystem.config.js
     environment:
       - PORT=3000
       - REDIS_PASS=redisdev
