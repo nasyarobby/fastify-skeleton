@@ -1,7 +1,7 @@
 version: "3.3"
 services:
   api:
-    image: 10.244.65.16:16379/djpauth/api
+    image: # edit this
     ports:
       - 3000:3000
     volumes:
