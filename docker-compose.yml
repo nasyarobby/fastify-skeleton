@@ -5,7 +5,7 @@ services:
     ports:
       - 3000:3000
     volumes:
-      - ./src:/server/src
+      - ./src:/server
     environment:
       - PORT=3000
       - REDIS_PASS=redisdev
