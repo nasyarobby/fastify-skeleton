@@ -1,9 +1,9 @@
 {
   "openapi": "3.0.1",
   "info": {
-    "title": "DJPOnline Auth API",
-    "description": "API untuk DJPOnline",
-    "version": "0.1.0"
+    # "title": "Fastify",
+    # "description": "API Description",
+    # "version": "1.0.0"
   },
   "servers": [
     {
@@ -14,7 +14,7 @@
     "/": {
       "get": {
         "tags": ["root"],
-        "summary": "roo folder",
+        "summary": "root folder",
         "description": "Get API status",
         "operationId": "getRoot",
         "responses": {
