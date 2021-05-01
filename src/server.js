@@ -10,6 +10,8 @@ const Server = new DJPApi({
   address,
   specificationFilePath,
   service,
-  logger: DJPApi.PRESETS.logger[process.env.NODE_ENV || 'development'],
+  fastifyConfig: {
+    logger: DJPApi.PRESETS.logger[process.env.NODE_ENV || 'development'],
+  }
 });
 Server.start();
