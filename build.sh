@@ -28,5 +28,9 @@ TAG \e[33m$TAG\e[0m"
 
 echo -e "Tagging image as \e[33m$REGISTRY/$IMAGE_NAME/$TAG\e[0m"
 
+# Buat file gitlog.txt untuk kemudahan tracing commit pada image
+git log > src/gitlog.txt
+
+
 docker build -t ${REGISTRY}/${IMAGE_NAME}:${TAG} -t ${REGISTRY}/${IMAGE_NAME}:latest .
 docker push ${REGISTRY}/${IMAGE_NAME}
