@@ -22,6 +22,8 @@ const redis = REDIS_SENTINEL
       name: process.env.REDIS_SENTINEL_MASTER,
       password: REDIS_PASS,
       db: REDIS_DB,
+      enableReadyCheck: false,
+      maxRetriesPerRequest: null,
     })
   : new Redis(config);
 
@@ -46,4 +48,6 @@ module.exports.createClientSentinel = () =>
     name: process.env.REDIS_SENTINEL_MASTER,
     password: REDIS_PASS,
     db: REDIS_DB,
+    enableReadyCheck: false,
+    maxRetriesPerRequest: null,
   });
