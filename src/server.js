@@ -6,7 +6,7 @@ const specificationFilePath = `${__dirname}/app/swagger.json`;
 const service = require('./app/controllers');
 
 const Server = new DJPApi({
-  PORT,
+  port: PORT,
   address,
   specificationFilePath,
   service,
